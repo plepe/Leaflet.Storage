@@ -242,7 +242,7 @@ L.Storage.Xhr = {
         // data.html: login form
         // args: args of the first _json call, to call again at process end
         var self = this;
-        var proceed = function () {
+        var proceed = function (data) {
             L.Storage.fire('ui:end');
             if (typeof args !== 'undefined') {
                 L.Storage.Xhr._json.apply(self, args);
@@ -260,7 +260,7 @@ L.Storage.Xhr = {
                         self.login(data, args);
                     }
                     else {
-                        proceed();
+                        proceed(data);
                     }
                 }
             });
@@ -275,7 +275,7 @@ L.Storage.Xhr = {
                         L.Storage.fire('ui:end');
                         var win = window.open(link.href);
                         window.storage_proceed = function () {
-                            proceed();
+                            proceed(data);
                             win.close();
                         };
                     });
