@@ -877,6 +877,7 @@ L.Storage.Polyline = L.Polyline.extend({
         var actions = L.S.FeatureMixin.getVertexActions.call(this, e),
             index = e.vertex.getIndex();
         if (index === 0 || index === e.vertex.getLastIndex()) actions.push(L.S.ContinueLineAction);
+        else actions.push(L.S.SplitLineAction);
         return actions;
     }
 
