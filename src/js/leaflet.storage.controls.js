@@ -232,21 +232,6 @@ L.Storage.DeleteShapeAction = L.S.BaseFeatureAction.extend({
 
 });
 
-L.Storage.ExtractShapeAction = L.S.BaseFeatureAction.extend({
-
-    options: {
-        toolbarIcon: {
-            className: 'storage-extract-shape-from-multi',
-            tooltip: L._('Extract shape to separate feature')
-        }
-    },
-
-    onClick: function (e) {
-        this.feature.isolateShape(e.latlng);
-    }
-
-});
-
 L.Storage.BaseVertexAction = L.S.BaseFeatureAction.extend({
 
     initialize: function (map, feature, latlng, vertex) {
@@ -267,21 +252,6 @@ L.Storage.DeleteVertexAction = L.S.BaseVertexAction.extend({
 
     onClick: function () {
         this.vertex.delete();
-    }
-
-});
-
-L.Storage.SplitLineAction = L.S.BaseVertexAction.extend({
-
-    options: {
-        toolbarIcon: {
-            className: 'storage-split-line',
-            tooltip: L._('Split line')
-        }
-    },
-
-    onClick: function () {
-        this.vertex.split();
     }
 
 });

@@ -390,13 +390,8 @@ L.Storage.FeatureMixin = {
         }).addTo(this.map, this, e.latlng, e.vertex);
     },
 
-    getVertexActions: function (e) {
-        var ret = [L.S.DeleteVertexAction];
-        var index = e.vertex.getIndex();
-        if (index !== 0 && index !== e.vertex.getLastIndex()) {
-            ret.push(L.S.SplitLineAction);
-        }
-        return ret;
+    getVertexActions: function () {
+        return [L.S.DeleteVertexAction];
     },
 
     isMulti: function () {
@@ -740,10 +735,7 @@ L.Storage.PathMixin = {
 
     getInplaceToolbarActions: function (e) {
         var items = L.S.FeatureMixin.getInplaceToolbarActions.call(this, e);
-        if (this.isMulti()) {
-            items.push(L.S.DeleteShapeAction);
-            items.push(L.S.ExtractShapeFromMultiAction);
-        }
+        if (this.isMulti()) items.push(L.S.DeleteShapeAction);
         return items;
     },
 
